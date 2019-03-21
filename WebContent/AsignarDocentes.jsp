@@ -50,9 +50,12 @@ footer {
 
 <div class="w3-container w3-padding-64 w3-center" id="team">
 
-<h2>Asignar Usuarios</h2>
-<p> Para la asignatura </p>
-<p>${codigo } - ${nombre } - ${acronimo }</p>
+<h1>Asignar Usuarios</h1>
+<h2> Para la asignatura  ${codigo } - ${nombre } - ${acronimo }</h2>
+
+
+
+
 
 
 
@@ -69,16 +72,22 @@ footer {
 					<a href="#" onclick="ponerValor(this,'${profesor.id}');">Eliminar este profesor</a>
 					</p>
 		</c:forEach>
-		
-		
-		
+<br>
+<br>
+<br>
+<br>
 <p>Coordinador de la asignatura</p>
 	<p><input type="checkbox" style="visibility:hidden;" value="${coordinador.id}"name="coordinadorBorrado" id="${coordinador.id}">
 					${coordinador.usuario.nombre} ${coordinador.usuario.apellidos}
 					<a href="#" onclick="ponerValor(this,'${coordinador.id}');">Eliminar coordinador</a>
 					</p>
 
-
+		
+<br>
+<br>
+<br>
+<br>	
+		
 
 
 	<div id="profes1">
@@ -100,8 +109,11 @@ footer {
 	<div id="profes"></div>
 	
 	<br>
+<br>
+<br>
+
 	<a  href="#" onClick="addProfesor()" >Añadir otro profesor</a>
-	
+	<br>
 	<button type="submit" >Guardar cambios</button>
 </form>
 	

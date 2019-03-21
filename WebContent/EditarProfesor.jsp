@@ -126,6 +126,7 @@ footer {
          </c:forEach>
 	</select>
     </p>
+  
 
  <input type="submit" value="Editar">
 

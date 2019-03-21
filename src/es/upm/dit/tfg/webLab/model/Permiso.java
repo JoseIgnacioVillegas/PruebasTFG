@@ -16,11 +16,15 @@ import org.hibernate.annotations.FetchMode;
 
 @Entity
 public class Permiso implements Serializable{
+	
+	
 	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
   
 	
-	@ManyToMany(mappedBy="permisos",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+	//,cascade = CascadeType.ALL
+	@ManyToMany(mappedBy="permisos",fetch = FetchType.EAGER,cascade = { CascadeType.PERSIST,CascadeType.MERGE})
 	private List<Usuario> usuario;
 	
 	private String descripcion;

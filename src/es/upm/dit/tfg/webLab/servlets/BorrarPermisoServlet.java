@@ -25,13 +25,14 @@ public class BorrarPermisoServlet extends HttpServlet{
 		
 		Subject currentUser = (Subject) req.getSession().getAttribute("currentUser");
 		int id = Integer.parseInt(req.getParameter("id"));
-		
+		System.out.println("LO DEL ID " +id);
 		
 		/*
 		 * Solo puede entrar aquí si es administrador o si tiene el rol para gestionar usuarios 
 		 */
 		if (currentUser.hasRole("administrador") || currentUser.hasRole("gestionusuarios")){
 			Permiso permiso = PermisoDAOImplementation.getInstance().readPermiso(id);
+			System.out.println(permiso);
 			PermisoDAOImplementation.getInstance().deletePermiso(permiso);
 	
 			List<Permiso> todoPermisos = PermisoDAOImplementation.getInstance().readPermisos();

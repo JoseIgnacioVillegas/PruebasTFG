@@ -21,7 +21,9 @@ public class Usuario implements Serializable{
 	@Fetch(value = FetchMode.JOIN)
 	private Profesor profesor;
 	
-	@ManyToMany(cascade = CascadeType.ALL, fetch =FetchType.EAGER)
+	
+	//cascade = CascadeType.ALL,
+	@ManyToMany( fetch =FetchType.EAGER,cascade = { CascadeType.PERSIST,CascadeType.MERGE})
 	@Fetch(value = FetchMode.SUBSELECT)
 	private List<Permiso> permisos;
 
@@ -77,6 +79,11 @@ public class Usuario implements Serializable{
 	}
 	public void setProfesor(Profesor profesor) {	
 		this.profesor=profesor;
+	}
+	
+	
+	public void deleteAllPermisos() {
+		this.permisos=new ArrayList<Permiso>();
 	}
 }
 

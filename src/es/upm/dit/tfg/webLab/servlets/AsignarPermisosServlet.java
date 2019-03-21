@@ -47,25 +47,37 @@ public class AsignarPermisosServlet extends HttpServlet{
 		 * Solo puede entrar aquí si es administrador o si tiene el rol para gestionar usuarios 
 		 */
 		if (currentUser.hasRole("administrador") || currentUser.hasRole("gestionusuarios")){
+			
+			
+			
+			
+			
+			
+			
 			Usuario usuario = UsuarioDAOImplementation.getInstance().readUsuario(UsuarioId);
+			UsuarioDAOImplementation.getInstance().deleteUsuario(usuario);
+			usuario.deleteAllPermisos();
 			
 			//Saco el array de los id de los profesores borrados
 			String todosPermisosId[]; 
-			todosPermisosId = req.getParameterValues("permisos");
-			
+			todosPermisosId = req.getParameterValues("permisosAsignados");
+			System.out.println("PERMIIIIIIIIIIISOOOOSSS "+todosPermisosId);
 			List<Permiso> nuevosPermisos = new ArrayList<Permiso>();
-	
+			System.out.println(nuevosPermisos);
+			
+			
 			try {
 				for (int i = 0; i< todosPermisosId.length; i++) {
 					Permiso permiso = PermisoDAOImplementation.getInstance().readPermiso(Integer.parseInt(todosPermisosId[i]));
 					nuevosPermisos.add(permiso);
+					System.out.println(permiso.getPermiso());
 				}
 			}catch(Exception e) {
 				System.out.println(e);
 			}finally {
 						
 			}
-			
+			System.out.println("Pasa el try "+nuevosPermisos);
 			usuario.setPermisos(nuevosPermisos);
 			UsuarioDAOImplementation.getInstance().updateUsuario(usuario);
 

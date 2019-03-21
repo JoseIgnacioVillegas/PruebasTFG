@@ -1,6 +1,7 @@
 package es.upm.dit.tfg.webLab.servlets;
 
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -39,24 +40,31 @@ public class ObtenerPermisosServlet extends HttpServlet{
 		
 		Usuario usuario = UsuarioDAOImplementation.getInstance().readUsuario(codigoUsuario);
 		
-		
+		List<Permiso> listavacia = new ArrayList<>();
 		
 		List<Permiso> permisosUsuario = usuario.getPermisos();
+		
 		List<Permiso> todosPermisos = PermisoDAOImplementation.getInstance().readPermisos();
-		
-		
-		try {
-			for (int j = 0; j< permisosUsuario.size(); j++) {
+			
+		if(todosPermisos.size()==permisosUsuario.size()) {
+			todosPermisos = new ArrayList<>();
+		}else {
+			try {
 				for (int i = 0; i< todosPermisos.size(); i++) {
-					if(permisosUsuario.get(i).getId()==todosPermisos.get(i).getId())todosPermisos.remove(i);
+					for (int j = 0; j< permisosUsuario.size(); j++) {
+						System.out.println("idtodos permisos "+todosPermisos.get(i).getId());
+						System.out.println("ids usuario "+permisosUsuario.get(j).getId());
+						if(permisosUsuario.get(j).getId()==todosPermisos.get(i).getId()) {
+							System.out.println("ids que coinciden "+todosPermisos.get(i).getId());
+							todosPermisos.remove(i);}
+					}
 				}
+			}catch(Exception e) {
+				System.out.println(e);
+			}finally {
 			}
-		}catch(Exception e) {
-			System.out.println(e);
-		}finally {
 		}
 		
-
 
 		req.getSession().setAttribute("permisosUsuario", permisosUsuario);
 		req.getSession().setAttribute("todosPermisos", todosPermisos);

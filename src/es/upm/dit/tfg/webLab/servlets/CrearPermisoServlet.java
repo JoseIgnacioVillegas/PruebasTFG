@@ -29,22 +29,16 @@ public class CrearPermisoServlet extends HttpServlet{
 		String descripcion = req.getParameter("descripcion");
 		Usuario usuario = null;
 		
-		System.out.print(currentUser);
 		
 		/*
 		 * Solo puede entrar aquí si es administrador o si tiene el rol para gestionar usuarios 
 		 */
 		if (currentUser.hasRole("administrador") || currentUser.hasRole("gestionusuarios")){
-			List<Permiso> todosPermisos = PermisoDAOImplementation.getInstance().readPermisos();
-			int idMaxPermiso = todosPermisos.size() +1;
 			
-			System.out.println(nom);
 			Permiso permiso =new Permiso();
 			permiso.setPermiso(nom);
 			permiso.setDescripcion(descripcion);
-			permiso.setId(idMaxPermiso);
 			permiso.addUsuario(usuario);
-			System.out.print(permiso.getPermiso());
 			PermisoDAOImplementation.getInstance().createPermiso(permiso);
 			
 			

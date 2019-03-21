@@ -142,15 +142,33 @@ footer {
 		</td>
 	</tr>
 		
-	<c:forEach items="${permisosUsuario}" var="permiso">
+		
+	
+		<c:forEach items="${permisosUsuario}" var="permiso">
+			<tr>
+				<td>${permiso.permiso } </td>
+				<td>${permiso.descripcion } </td>
+				
+				<td>
+				
+				
+				
+					<input type="checkbox" value="${permiso.id}" name="permisosAsignados" checked>
+
+				
+				</td>
+				
+			</tr>
+		</c:forEach>
+	<c:forEach items="${todosPermisos}" var="permiso">
 		<tr>
 			<td>${permiso.permiso } </td>
 			<td>${permiso.descripcion } </td>
-			<td><input type="checkbox" value="${permiso.id}" name="permisos" checked></td>
+			<td><input type="checkbox" value="${permiso.id}" name="permisosAsignados"></td>
 		</tr>
 	</c:forEach>
-	
 
+<!--  
 	<c:forEach items="${todosPermisos}" var="permiso">
 		<tr>
 			<td>${permiso.permiso } </td>
@@ -158,7 +176,7 @@ footer {
 			<td><input type="checkbox" value="${permiso.id}" name="permisos"></td>
 		</tr>
 	</c:forEach>
-		
+		-->
 		
 
 		
@@ -199,6 +217,14 @@ footer {
 
 
 <script>
+
+function mostrarInput(obj,id1,id2){
+	if(id1==id2){
+		document.getElementById('input').innerHTML= "<input type=\"checkbox\" value=\"id2\" name=\"permisos\" checked>";
+	}else{
+		document.getElementById('input').innerHTML= "<input type=\"checkbox\" value=\"id2\" name=\"permisos\">";
+	}
+}
 
 
 function desplegarMenu(obj){ 	
