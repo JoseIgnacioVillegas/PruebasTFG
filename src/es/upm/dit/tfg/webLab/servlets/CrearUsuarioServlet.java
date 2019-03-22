@@ -34,7 +34,7 @@ public class CrearUsuarioServlet extends HttpServlet{
 		/*
 		 * Solo puede entrar aquí si es administrador o si tiene el rol para gestionar usuarios 
 		 */
-		if (currentUser.hasRole("administrador") || currentUser.hasRole("gestionusuarios")){
+		//if (currentUser.hasRole("administrador") || currentUser.hasRole("gestionusuarios")){
 
 			List<Usuario> todosUsuarios = UsuarioDAOImplementation.getInstance().readUsuarios();
 			int idMaxUsuario = todosUsuarios.size() +1;
@@ -68,9 +68,9 @@ public class CrearUsuarioServlet extends HttpServlet{
 			getServletContext().getRequestDispatcher("/CRUDPAS.jsp").forward(req, resp);
 		
 		
-		}else {
-			getServletContext().getRequestDispatcher("/NoPermitido.jsp").forward(req, resp);
-		}
+		//}else {
+			//getServletContext().getRequestDispatcher("/NoPermitido.jsp").forward(req, resp);
+		//}
 
 	}
 }

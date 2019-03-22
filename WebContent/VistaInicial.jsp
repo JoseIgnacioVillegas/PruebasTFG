@@ -45,6 +45,7 @@ footer {
   
   <form action="VistaInicial.jsp"><button class="w3-bar-item w3-button w3-teal"><i class="fa fa-home w3-margin-right"></i>Inicio</button></form>
   
+
   <shiro:hasRole name="profesor">
   <form action="ProfesorServlet"><button class="w3-bar-item w3-button w3-hide-small w3-hover-white">Profesor</button></form>
   </shiro:hasRole>
@@ -52,7 +53,7 @@ footer {
   <shiro:hasRole name="coordinador">
   <form action="CoordinadorServlet"><button class="w3-bar-item w3-button w3-hide-small w3-hover-white">Coordinador</button></form>
   </shiro:hasRole>
-  
+
    <shiro:hasAnyRoles name="administrador,gestiondocencia,gestionusuarios,gestiondatos">
   
   <form action="PasoGestorServlet"><button class="w3-bar-item w3-button w3-hide-small w3-hover-white">Gestor</button></form>

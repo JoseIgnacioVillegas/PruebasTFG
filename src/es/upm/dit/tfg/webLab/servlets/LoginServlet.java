@@ -18,7 +18,7 @@ import es.upm.dit.tfg.webLab.model.Usuario;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -40,13 +40,17 @@ public class LoginServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String user = req.getParameter("user");
 		String password = req.getParameter("password");
-		
+		List<Usuario> todoUsuarios = UsuarioDAOImplementation.getInstance().readUsuarios();
+		/*
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
 		
 		IniRealm iniRealm = new IniRealm(s+"/shiro.ini");
 		DefaultSecurityManager securityManager = new DefaultSecurityManager(iniRealm);
 		SecurityUtils.setSecurityManager((org.apache.shiro.mgt.SecurityManager) securityManager);
+		*/
+		
+		
 		Subject currentUser = SecurityUtils.getSubject();
 		
 		

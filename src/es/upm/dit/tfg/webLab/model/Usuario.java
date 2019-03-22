@@ -30,6 +30,7 @@ public class Usuario implements Serializable{
 	private String nombre;
 	private String apellidos;
 	private String correo;
+	private String password;
 	
 	public Usuario() {
 		this.id=0;
@@ -38,6 +39,7 @@ public class Usuario implements Serializable{
 		this.apellidos="";
 		this.correo="";
 		this.profesor=null;
+		this.password ="";
 	}
 		
 	
@@ -59,7 +61,9 @@ public class Usuario implements Serializable{
 	public Profesor getProfesor() {
 		return this.profesor;
 	}
-		
+	public String getPassword() {
+		return this.password;
+	}	
 	
 	
 	public void setId(int id) {
@@ -80,7 +84,9 @@ public class Usuario implements Serializable{
 	public void setProfesor(Profesor profesor) {	
 		this.profesor=profesor;
 	}
-	
+	public void setPassword(String password) {	
+		this.password=password;
+	}
 	
 	public void deleteAllPermisos() {
 		this.permisos=new ArrayList<Permiso>();
